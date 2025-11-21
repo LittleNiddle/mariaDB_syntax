@@ -27,7 +27,7 @@ show tables;
 CREATE TABLE author(id int primary key, name varchar(255), email varchar(255), password varchar(255));
 
 -- 테이블 컬럼정보 조회
-DESCRIBE author;
+describe author;
 
 -- 테이블 데이터 전체 조회
 SELECT * from author;
@@ -65,7 +65,7 @@ alter table author modify column email varchar(255) not null unique;
 
 -- 실습1. author테이블에 address컬럼을 추가(varchar 255). name은 not null로 변경.
 ALTER TABLE author ADD COLUMN address varchar(255);
-ALTER TABLE author MODIFY COLUMN name varchar(255) NOT NULL
+ALTER TABLE author MODIFY COLUMN name varchar(255) NOT NULL;
 
 -- 실습2. post 테이블에 title을 not null로 변경. content는 contents로 이름 변경
 ALTER TABLE post MODIFY COLUMN title varchar(255) not null;

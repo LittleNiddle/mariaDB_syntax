@@ -22,9 +22,10 @@ SELECT * FROM author WHERE name = '홍길동';
 SELECT * FROM author WHERE id > 2 AND name='홍길동';
 SELECT * FROM author WHERE id in (1,3,5);
 -- 이름이 홍길동인 글쓴이가 쓴 글 목록을 조회하시오.
-SELECT * FROM author WHERE id in (SELECT id FROM author WHERE name = '홍길동');
+SELECT * FROM post WHERE author_id in (SELECT id FROM author WHERE name = '홍길동');
 
 -- 중복제거 조회 : distinct
+SELECT name FROM author;
 SELECT DISTINCT name FROM author;
 
 -- 정렬 : order by + 컬럼명
@@ -48,4 +49,3 @@ SELECT a.name, a.email FROM author a;
 SELECT * FROM author WHERE password IS NULL;
 SELECT * FROM author WHERE password IS NOT NULL;
 
--- 프로그래머스 sql 문제풀이
