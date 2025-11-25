@@ -28,3 +28,11 @@ alter table post add constraint post_fk foreign key(author_id) references author
 delete from author where id = 3;
 --     3-2. 수정 테스트
 update author set id = 15 where id = 2;
+
+-- default 옵션 (주로 null과 enum에서 사용된다.)
+alter table author modify column name varchar(255) default'anonymous';
+-- auto_increment : 숫자값을 입력 안했을때, 마지막에 입력된 가장 큰 값에 +1만큼 자동으로 증가된 숫자값 적용
+alter table author modify column id bigint auto_increment;
+alter table post modify column id bigint auto_increment;
+
+alter table post add column user_id char(36) not null default (uuid());
