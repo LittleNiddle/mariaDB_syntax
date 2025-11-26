@@ -10,6 +10,8 @@ select * from post p inner join author a on p.author_id = a.id;
 -- 글쓴이가 있는 글 전체 정보와 글쓴이의 이메일만 출력
 select p.*, a.email from post p inner join author a on p.author_id = a.id;
 
+-- ==> inner join의 경우 앞 뒤가 바뀌어도 결과가 같다.
+
 -- case 3 : author left join post
 -- 글쓴이는 모두 조회하되, 쓴 글이 있다면 글도 함께 조회
 select * from author a left join post p on a.id = p.author_id;
@@ -101,7 +103,7 @@ ORDER BY NAME;
 -- 카테고리 별 도서 판매량 집계하기
 SELECT B.CATEGORY, SUM(BS.SALES) AS TOTAL_SALES
 FROM BOOK B
-INNER JOIN BOOK_SALES BS
+LEFT JOIN BOOK_SALES BS 
 ON BS.BOOK_ID = B.BOOK_ID 
 WHERE DATE_FORMAT(SALES_DATE, '%Y-%m') = '2022-01'
 GROUP BY B.CATEGORY
@@ -116,3 +118,16 @@ WHERE STATUS = 'DONE'
 GROUP BY U.USER_ID
 HAVING SUM(PRICE) >= 700000
 ORDER BY TOTAL_SALES;
+
+-- 다중열 group by
+-- group by 첫번째 컬럼, 두번째 컬럼 : 첫번째 컬럼으로 grouping 이후에 두번째 컬럼으로 grouping
+-- post 테이블에서 작성자별로 구분하여 같은 제목의 글의 개수를 출력하시오.
+-- 작성자별, 제목별
+select author_id, title, count(*) from post group by author_id, title;
+
+-- 재구매가 일어난 상품과 회원 리스트 구하기
+SELECT USER_ID, PRODUCT_ID
+FROM ONLINE_SALE
+GROUP BY USER_ID, PRODUCT_ID
+HAVING COUNT(*) >= 2
+ORDER BY USER_ID, PRODUCT_ID DESC;
