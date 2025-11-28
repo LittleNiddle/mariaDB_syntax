@@ -54,3 +54,20 @@ insert into author_post_list values(2,2);
 
 -- 글 전체 목록 조회하기 : 제목, 내용, 글쓴이 이름이 조회가 되도록 select 쿼리 생성
 select * from post inner join author_post_list inner join author;
+
+-- 회원가입 및 주소생성
+insert into author(email, name, password) values ('ccc@naver.com', '홍길동3', 12344);
+insert into address(country, city, street, author_id) values('korea', 'seoul', 'sangdo', 3);
+
+-- 글쓰기
+-- 최초 생성자
+insert into post(title, contents) values ('hello2', 'hello world2 is ...');
+insert into author_post_list(author_id, post_id) values(1,2);
+insert into author_post_list(author_id, post_id) values(3,2);
+
+-- 추후 참여자
+-- update ...
+-- insert into author_post_list values()
+
+-- 글 전체 목록 작성하기 : 제목, 내용, 글쓴이 이름이 조회가 되도록
+select p.title, p.contents, a.name from post p inner join author_post_list apl on p.id = apl.post_id inner join author a on a.id = apl.author_id;
