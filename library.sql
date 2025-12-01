@@ -49,16 +49,16 @@ insert into member(name, email, role) values('사용자', 'bcd@naver.com', 'user
 -- 2. 도서 등록
 -- role이 admin이면
 insert into book(ISBN, title, author, category) values('978-89-954321-1-5', '책1', '저자1', 100);
-insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '위치1');
+insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '100 서가');
 
 insert into book(ISBN, title, author, category) values('978-89-954321-2-5', '책2', '저자2', 200);
-insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '위치2');
+insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '200 서가');
 
 insert into book(ISBN, title, author, category) values('978-89-954321-3-5', '책3', '저자3', 300);
-insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '위치3');
+insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '300 서가');
 
 insert into book(ISBN, title, author, category) values('978-89-954321-4-5', '책4', '저자4', 400);
-insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '위치4');
+insert into realBook(bookID, location) values((select id from book order by id desc limit 1), '400 서가');
 
 -- 3. 도서 대출
 -- 1번 사용자가 1,2를 빌림
